@@ -51,33 +51,7 @@ class _MyAppState extends State<MyApp> {
             const BottomBar()
             : AdminScreen()
           : auth_screen(),
-      // home:Scaffold(
-      //   appBar: AppBar(
-      //     title: const Text("Welcome to Amazon"),
-      //     centerTitle: true,
-      //   ),
-      //   body: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-      //     SizedBox(height: height * 0.06),
-      //     const Center(
-      //         child: Text(
-      //       "Home page",
-      //       style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-      //     )),
-      //     Builder(builder: (context) {
-      //       return ElevatedButton(
-      //           onPressed: () {
-      //             Navigator.pushNamed(context, auth_screen.routeName);
-      //           },
-      //           child: const Text(
-      //             "click",
-      //             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-      //           )
-      //           );
-      //     }
-      //     )
-      //   ]
-      //   ),
-      //  )
+    
     );
   }
 }

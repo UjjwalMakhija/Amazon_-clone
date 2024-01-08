@@ -10,15 +10,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart ' as http;
 
-class Productdeatilservices {
-  void addToCart({
+class CartDetailServices {
+  void removefromCart({
     required BuildContext context,
     required Product12 product,
   }) async {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     try {
-      http.Response res = await http.post(
-        Uri.parse('$uri/api/add-to-cart'),
+      http.Response res = await http.delete(
+        Uri.parse('$uri/api/remove-from-cart/${product.id}'),
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
           'x-auth-token': userProvider.user.token,
