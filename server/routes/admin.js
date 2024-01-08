@@ -4,7 +4,7 @@ const  adminRouter = express.Router();
 // const bcryptjs=require('bcryptjs');
 // const jwt =require('jsonwebtoken');
 const admin = require('../middlewares/admin');
-const Product  = require('../models/product');
+const {Product } = require('../models/product');
 const authrouter = require('./auth');
 
 adminRouter.post('/admin/add-product',admin ,async(req,res)=>{
