@@ -1,22 +1,17 @@
+import 'package:amazon_clone/features/account/services/account_services.dart';
 import 'package:amazon_clone/features/account/widgets/button.dart';
 import 'package:flutter/material.dart';
 
-class Initial_buttons extends StatefulWidget {
-  const Initial_buttons({super.key});
-
-  @override
-  State<Initial_buttons> createState() => _Initial_buttonsState();
-}
-
-class _Initial_buttonsState extends State<Initial_buttons> {
+class Initial_buttons extends StatelessWidget {
+  const Initial_buttons({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Row(
           children: [
-            buttons(text: "Your Orders", onTap: (){}),
-            buttons(text: "Turn Seller", onTap: (){})
+            buttons(text: "Your Orders", onTap: () {}),
+            buttons(text: "Turn Seller", onTap: () {})
           ],
         ),
         SizedBox(
@@ -24,11 +19,10 @@ class _Initial_buttonsState extends State<Initial_buttons> {
         ),
         Row(
           children: [
-            buttons(text: "Log Out", onTap: (){}),
-            buttons(text: "Your Wish List", onTap: (){})
+            buttons(text: "Log Out", onTap: () =>AccountServices().logout(context)),
+            buttons(text: "Your Wish List", onTap: () {})
           ],
         )
-
       ],
     );
   }

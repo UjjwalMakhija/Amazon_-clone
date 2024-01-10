@@ -1,10 +1,4 @@
-import 'package:amazon_clone/commom/widgets/custom_button.dart';
-import 'package:amazon_clone/constants/global_variables.dart';
-import 'package:amazon_clone/features/account/widgets/product.dart';
 import 'package:amazon_clone/features/cart/services/cart_services.dart';
-import 'package:amazon_clone/features/cart/widgets/cart_subtotal.dart';
-import 'package:amazon_clone/features/home/search/screens/search_screen.dart';
-import 'package:amazon_clone/features/home/widgets/address_box.dart';
 import 'package:amazon_clone/features/productdetails/services/product_detail_services.dart';
 import 'package:amazon_clone/models/product.dart';
 import 'package:amazon_clone/providers/user_provider.dart';

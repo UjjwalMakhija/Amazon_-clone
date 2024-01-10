@@ -1,8 +1,9 @@
+import 'package:amazon_clone/constants/global_variables.dart';
 import 'package:amazon_clone/constants/loader.dart';
 import 'package:amazon_clone/features/account/widgets/product.dart';
 import 'package:amazon_clone/features/admin/screens/add_new_product.dart';
 import 'package:amazon_clone/features/admin/services/admin_services.dart';
-import 'package:amazon_clone/features/auth/services/auth_services.dart';
+
 import 'package:amazon_clone/models/product.dart';
 import 'package:flutter/material.dart';
 
@@ -79,11 +80,11 @@ class _PostsState extends State<Posts> {
                   );
                 }),
             floatingActionButton: FloatingActionButton(
-              backgroundColor: Color.fromARGB(255, 15, 20, 20),
+              backgroundColor: GlobalVariables.selectedNavBarColor,
               onPressed: addproducts,
               child: Icon(
                 Icons.add_circle_sharp,
-                color: Colors.black,
+                color: const Color.fromARGB(255, 250, 250, 250),
               ),
             ),
             floatingActionButtonLocation:

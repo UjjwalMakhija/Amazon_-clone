@@ -1,3 +1,5 @@
+
+
 import 'package:amazon_clone/commom/widgets/custom_button.dart';
 import 'package:amazon_clone/commom/widgets/stars.dart';
 import 'package:amazon_clone/constants/global_variables.dart';
@@ -40,9 +42,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     }
   }
 
-  void navigateToSearchScren(String query) {
-    Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
-  }
+    void navigateToSearchScren(String query) {
+      Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
+    }
 
   void addtocart() {
     productDetailservices.addToCart(context: context, product: widget.product);
@@ -50,9 +52,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(60),
+          preferredSize:  Size.fromHeight(60),
           child: AppBar(
             flexibleSpace: Container(
               decoration: const BoxDecoration(
@@ -166,7 +169,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           fontSize: 16),
                       children: [
                     TextSpan(
-                      text: 'Deal Price: ',
+                      text: '\$${widget.product.price}',
                       style: TextStyle(
                           color: Colors.red,
                           fontWeight: FontWeight.w500,
