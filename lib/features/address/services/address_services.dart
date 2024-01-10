@@ -1,15 +1,10 @@
 import 'dart:convert';
-import 'dart:io';
-
 import 'package:amazon_clone/constants/errorhandling.dart';
 import 'package:amazon_clone/constants/global_variables.dart';
 import 'package:amazon_clone/constants/utils.dart';
-
-import 'package:amazon_clone/models/product.dart';
 import 'package:amazon_clone/models/users.dart';
 import 'package:amazon_clone/providers/user_provider.dart';
 import 'package:flutter/material.dart';
-
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
@@ -23,7 +18,7 @@ class AddressServices {
       http.Response res = await http.post(
         Uri.parse('$uri/api/save-user-address'),
         headers: {
-          'Content-Type': 'application/json;chaset=UTF-8',
+          'Content-Type': 'application/json;charset=UTF-8',
           'x-auth-token': user.user.token,
         },
         body: jsonEncode({'address': address}),
@@ -38,6 +33,7 @@ class AddressServices {
             user.setUserfrommodel(user1);
           });
     } catch (e) {
+      print('sus $e');
       showsnackbar(context, e.toString());
     }
   }
@@ -50,9 +46,11 @@ class AddressServices {
     final userprovider = Provider.of<UserProvider>(context, listen: false);
 
     try {
+      print(userprovider.user.cart);
+      print(userprovider.user.token);
       http.Response res = await http.post(Uri.parse('$uri/api/order'),
           headers: {
-            'content-type': 'application/json ; charser :utf-8',
+            'content-type': 'application/json ; charset=utf-8',
             'x-auth-token': userprovider.user.token,
           },
           body: jsonEncode({
@@ -71,6 +69,9 @@ class AddressServices {
             userprovider.setUserfrommodel(user);
           });
     } catch (e) {
+      print(address);
+      print('$totalSum');
+      print('1  $e');
       showsnackbar(context, e.toString());
     }
   }
@@ -82,7 +83,7 @@ class AddressServices {
       http.Response res =
           await http.post(Uri.parse('$uri/admin/delete-product'),
               headers: {
-                'Content-Type': 'application/json;chaset=UTF-8',
+                'Content-Type': 'application/json;charset=UTF-8',
                 'x-auth-token': user.user.token,
               },
               body: jsonEncode({

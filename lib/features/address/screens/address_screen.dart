@@ -1,3 +1,4 @@
+import 'package:amazon_clone/commom/widgets/custom_button.dart';
 import 'package:amazon_clone/commom/widgets/custom_textfield.dart';
 import 'package:amazon_clone/constants/global_variables.dart';
 import 'package:amazon_clone/constants/utils.dart';
@@ -53,7 +54,7 @@ class _AddressScreenState extends State<AddressScreen> {
     addressServices.placeOrder(
         context: context,
         address: addresstobeused,
-        totalSum: widget.totalamount as double);
+        totalSum: double.parse(widget.totalamount));
   }
 
   void onpaypresse(String addressfromprovider) {
@@ -75,6 +76,22 @@ class _AddressScreenState extends State<AddressScreen> {
       showsnackbar(context, 'ERROR');
     }
     print(addresstobeused);
+    res1();
+  }
+
+  void res1() {
+    if (Provider.of<UserProvider>(context, listen: false)
+        .user
+        .address
+        .isEmpty) {
+      addressServices.saveuseraddress(
+          context: context, address: addresstobeused);
+    }
+    print(addresstobeused);
+    addressServices.placeOrder(
+        context: context,
+        address: addresstobeused,
+        totalSum: double.parse(widget.totalamount));
   }
 
   @override
@@ -159,22 +176,27 @@ class _AddressScreenState extends State<AddressScreen> {
                 ),
               ),
               FutureBuilder<PaymentConfiguration>(
-  future: _googlePayConfigFuture,
-   builder: (context, snapshot) => snapshot.hasData ?
-              GooglePayButton(
-                onPressed: () => onpaypresse(address),
-                onPaymentResult: OnGpayresult,
-                paymentItems: paymentItems,
-                paymentConfiguration: snapshot.data!,
-                width: double.infinity,
-                type: GooglePayButtonType.buy,
-                loadingIndicator: const Center(
-                  child: CircularProgressIndicator(),
-                ),
-                height: 50,
-                margin: const EdgeInsets.only(top: 15),
-              )
-              :const SizedBox.shrink())
+                  future: _googlePayConfigFuture,
+                  builder: (context, snapshot) => snapshot.hasData
+                      ? GooglePayButton(
+                          onPressed: () => onpaypresse(address),
+                          onPaymentResult: OnGpayresult,
+                          paymentItems: paymentItems,
+                          paymentConfiguration: snapshot.data!,
+                          width: double.infinity,
+                          type: GooglePayButtonType.buy,
+                          loadingIndicator: const Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                          height: 50,
+                          margin: const EdgeInsets.only(top: 15),
+                        )
+                      : const SizedBox.shrink()),
+              const SizedBox(
+                height: 10,
+              ),
+              Custom_button(
+                  text: "Cash On Delivery", onTap: () => onpaypresse(address))
             ],
           ),
         ),

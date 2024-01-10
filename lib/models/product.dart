@@ -1,6 +1,6 @@
-import 'package:amazon_clone/features/account/widgets/product.dart';
+
 import 'package:amazon_clone/models/rating.dart';
-import 'package:flutter/material.dart';
+
 import 'dart:convert';
 
 class Product12 {

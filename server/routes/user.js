@@ -82,6 +82,7 @@ user = await user.save();
 res.json(user)
     }
     catch(e){
+        console.log(e.message);
         res.status(500).json({eror:e.message});
     }
 
@@ -109,24 +110,24 @@ let user = await User.findById(req.user);
 user.cart =[]
 user = await user.save();
 
-let order = new Order({products,totalPrice,address,userId:req.user,orderedAt: new Date().getTime(),})
+let order = new Order({products,totalPrice,address,userId:req.user,orderedAt: new Date().getTime()})
 order = await order.save();
 res.json(order)
     }
     catch(e){
+        console.log(e.message);
         res.status(500).json({eror:e.message});
     }
-
-
 })
 userRouter.get('/api/orders/me',auth,async(req,res)=>{
 
 try{
-let orders = await Order.findById({userId: req.user});
+let orders = await Order.find({userId: req.user});
 res.json(orders);
 
 }
 catch(e){
+    console.log(e.message);
 res.status(500).json({error:e.message})
 }
 
