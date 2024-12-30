@@ -7,7 +7,7 @@ const userRouter = require('./routes/user.js');
 const PORT=3000;
 const app=express();
 
-const DB="mongodb+srv://ujj:mongo12@cluster0.gaa5fjg.mongodb.net/?retryWrites=true&w=majority"
+const DB=""
 
 //INIT
 app.use(express.json());
